@@ -24,7 +24,7 @@ public extension Int {
         CGFloat( self.float )
     }
     
-    func remainderlessDivisibleBy(_ value: Int )-> Bool {
+    func divisibleBy(_ value: Int )-> Bool {
         self % value == 0
     }
 }
