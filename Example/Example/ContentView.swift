@@ -19,7 +19,7 @@ struct ContentView: View {
                     view
                         .foregroundStyle(.green)
                         .font(.title)
-                } then: { view in
+                } else: { view in
                     view
                         .foregroundStyle(.red)
                         .font(.largeTitle)

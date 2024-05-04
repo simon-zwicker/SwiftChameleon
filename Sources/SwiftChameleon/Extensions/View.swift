@@ -14,13 +14,20 @@ public extension View {
     }
     
     @ViewBuilder
-    func `if`<Content: View>(_ condition: Bool, content: (Self) -> Content, `else`: ((Self) -> Content)? = nil) -> some View {
+    func `if`<Content: View>(_ condition: Bool, content: (Self) -> Content) -> some View {
         if condition {
             content(self)
-        } else if let `else` {
-            `else`(self)
         } else {
             self
+        }
+    }
+    
+    @ViewBuilder
+    func ifelse<Content: View>(_ condition: Bool, _ `if`: (Self) -> Content, _ `else`: (Self) -> Content) -> some View {
+        if condition {
+            `if`(self)
+        } else {
+            `else`(self)
         }
     }
     
