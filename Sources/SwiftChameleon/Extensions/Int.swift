@@ -8,7 +8,7 @@
 import Foundation
 
 public extension Int {
-    func isEven() -> Bool {
-        return self % 2 == 0
+    var isEven: Bool {
+        self % 2 == 0
     }
 }
