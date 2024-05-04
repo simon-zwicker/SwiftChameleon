@@ -19,11 +19,17 @@ struct ContentView: View {
                     view
                         .foregroundStyle(.green)
                         .font(.title)
-                }
-                .if(!active) { view in
+                } then: { view in
                     view
                         .foregroundStyle(.red)
                         .font(.largeTitle)
+                }
+
+            Image(systemName: "globe")
+                .if(active) { view in
+                    view
+                        .foregroundStyle(.blue)
+                        .font(.title3)
                 }
             
             
