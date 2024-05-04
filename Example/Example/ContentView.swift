@@ -28,7 +28,7 @@ struct ContentView: View {
                     view
                         .foregroundStyle(.blue)
                         .font(.title3)
-                } else: <#((Image) -> some View)?#>
+                }
             
             
             Text("Toggle")
