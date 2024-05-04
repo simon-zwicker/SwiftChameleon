@@ -22,4 +22,8 @@ public extension Date {
     func get(_ component: Calendar.Component) -> Int {
         return Calendar.current.component(component, from: self)
     }
+    
+    var intTimeIntervalSince1970: Int {
+        Int( self.timeIntervalSince1970 )
+    }
 }
