@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
-                .ifelse(active) { view in
+                .if(active) { view in
                     view
                         .font(.largeTitle)
                 } else: { view in
@@ -28,7 +28,7 @@ struct ContentView: View {
                     view
                         .foregroundStyle(.blue)
                         .font(.title3)
-                }
+                } else: <#((Image) -> some View)?#>
             
             
             Text("Toggle")
