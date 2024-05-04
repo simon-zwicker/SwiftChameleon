@@ -16,4 +16,8 @@ public extension String {
     var translate: LocalizedStringKey {
         LocalizedStringKey(self)
     }
+    
+    var toArray: [Character] {
+        Array(self)
+    }
 }
