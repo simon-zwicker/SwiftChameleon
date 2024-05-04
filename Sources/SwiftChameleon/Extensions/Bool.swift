@@ -15,4 +15,8 @@ public extension Bool {
     mutating func setFalse() {
         self = false
     }
+    
+    var opposit: Bool {
+        !self
+    }
 }
