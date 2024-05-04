@@ -15,4 +15,10 @@ public extension Data {
             throw error
         }
     }
+    
+    var octalString: String {
+        return self.map {byte in
+            String(format: "%03o", byte)
+        }.joined()
+    }
 }
