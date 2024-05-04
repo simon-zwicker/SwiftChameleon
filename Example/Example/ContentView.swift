@@ -18,7 +18,7 @@ struct ContentView: View {
                 .ifelse(active) { view in
                     view
                         .font(.largeTitle)
-                } _: { view in
+                } else: { view in
                     view.font(.footnote)
                 }
 
