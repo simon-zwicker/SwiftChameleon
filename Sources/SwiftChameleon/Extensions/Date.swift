@@ -9,15 +9,17 @@ import Foundation
 
 public extension Date {
     
+    // MARK: - Properties
+    var isWeekend: Bool {
+        Calendar.current.isDateInWeekend(self)
+    }
+    
+    var isToday: Bool {
+        Calendar.current.isDate(.init(), inSameDayAs: self)
+    }
+    
+    // MARK: - Functions
     func get(_ component: Calendar.Component) -> Int {
         return Calendar.current.component(component, from: self)
-    }
-    
-    func isWeekend() -> Bool {
-        return Calendar.current.isDateInWeekend(self)
-    }
-    
-    func isToday() -> Bool {
-        return Calendar.current.isDate(Date(), inSameDayAs: self)
     }
 }
