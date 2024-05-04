@@ -23,7 +23,7 @@ public extension View {
     }
     
     @ViewBuilder
-    func ifelse<Content: View>(_ condition: Bool, _ `if`: (Self) -> Content, _ `else`: (Self) -> Content) -> some View {
+    func ifelse<Content: View>(_ condition: Bool, _ `if`: (Self) -> Content, `else`: (Self) -> Content) -> some View {
         if condition {
             `if`(self)
         } else {

@@ -15,15 +15,13 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
-                .if(active) { view in
+                .ifelse(active) { view in
                     view
-                        .foregroundStyle(.green)
-                        .font(.title)
-                } else: { view in
-                    view
-                        .foregroundStyle(.red)
                         .font(.largeTitle)
+                } _: { view in
+                    view.font(.footnote)
                 }
+
 
             Image(systemName: "globe")
                 .if(active) { view in
