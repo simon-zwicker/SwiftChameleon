@@ -9,6 +9,7 @@ import SwiftUI
 
 public extension String {
     
+    //MARK: - Properties
     var isNotEmpty: Bool {
         !self.isEmpty
     }
@@ -44,6 +45,7 @@ public extension String {
         return Data(bytes)
     }
     
+    //MARK: - Functions
     func octalString(encoding: Encoding = .utf8)-> String? {
         guard let data = self.data(using: encoding) else {
             return nil

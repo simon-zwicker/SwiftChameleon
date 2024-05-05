@@ -1,10 +1,3 @@
-//  File.swift
-//  
-//
-//  Created by Nico on 04.05.24.
-//  
-//
-
 import Foundation
 
 public extension Date {
@@ -18,12 +11,12 @@ public extension Date {
         Calendar.current.isDate(.init(), inSameDayAs: self)
     }
     
+    var intTimeIntervalSince1970: Int {
+        Int( self.timeIntervalSince1970 )
+    }
+    
     // MARK: - Functions
     func get(_ component: Calendar.Component) -> Int {
         return Calendar.current.component(component, from: self)
-    }
-    
-    var intTimeIntervalSince1970: Int {
-        Int( self.timeIntervalSince1970 )
     }
 }

@@ -8,6 +8,8 @@
 import Foundation
 
 public extension Int {
+    
+    // MARK: - Properties
     var isEven: Bool {
         self % 2 == 0
     }
@@ -24,6 +26,7 @@ public extension Int {
         CGFloat( self.float )
     }
     
+    //MARK: - Funktions
     func divisibleBy(_ value: Int )-> Bool {
         self % value == 0
     }

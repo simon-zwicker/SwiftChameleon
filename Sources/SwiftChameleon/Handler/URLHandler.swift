@@ -4,7 +4,7 @@ import UIKit
 import AppKit
 #endif
 
-class URLHandler {
+public class URLHandler {
     public static func open(urlString: String)-> Bool {
         guard let url = URL(string: urlString) else {
             return false

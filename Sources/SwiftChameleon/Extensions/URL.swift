@@ -1,6 +1,6 @@
 import Foundation
 
-extension URL {
+public extension URL {
     func open() {
         URLHandler.open(self)
     }
