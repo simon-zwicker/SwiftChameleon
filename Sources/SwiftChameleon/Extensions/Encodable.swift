@@ -12,7 +12,7 @@ public extension Encodable {
         do {
             return try JSONEncoder().encode(self)
         } catch {
-            throw error
+            throw DataError.encode
         }
     }
 }

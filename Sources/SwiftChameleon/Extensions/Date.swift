@@ -12,7 +12,7 @@ public extension Date {
     }
     
     var intTimeIntervalSince1970: Int {
-        Int( self.timeIntervalSince1970 )
+        Int(self.timeIntervalSince1970)
     }
     
     // MARK: - Functions

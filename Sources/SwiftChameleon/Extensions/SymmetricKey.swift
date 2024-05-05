@@ -1,7 +1,7 @@
 import Foundation
-#if canImport(CryptoKit)
 import CryptoKit
 
+#if canImport(CryptoKit)
 public extension SymmetricKey {
     //MARK: - Properties
     var base64String: String {
@@ -10,36 +10,28 @@ public extension SymmetricKey {
     }
     
     //MARK: - Functions
-    func aesEncrypt(data: Data, nonce: AES.GCM.Nonce? = nil, authenticating: Data? = nil) throws -> Data? {
+    func aesEncrypt(data: Data, nonce: AES.GCM.Nonce? = nil, authenticating: Data? = nil) -> Data? {
         if nonce.isNil && authenticating.isNil {
-            return try AES.GCM.seal(data, using: self).combined ?? nil
+            return try? AES.GCM.seal(data, using: self).combined
         }
         if !nonce.isNil && authenticating.isNil {
-            return try AES.GCM.seal(data, using: self, nonce: nonce).combined ?? nil
+            return try? AES.GCM.seal(data, using: self, nonce: nonce).combined
         }
         if nonce.isNil && !authenticating.isNil {
-            return try AES.GCM.seal(data, using: self, authenticating: authenticating!).combined ?? nil
+            return try? AES.GCM.seal(data, using: self, authenticating: authenticating!).combined
         }
-        return try AES.GCM.seal(data, using: self, nonce: nonce, authenticating: authenticating!).combined ?? nil
+        return try? AES.GCM.seal(data, using: self, nonce: nonce, authenticating: authenticating!).combined
     }
     
-    func aesDecrypt(data: Data) throws -> Data? {
-        do {
-            let box = try AES.GCM.SealedBox(combined: data)
-            return try AES.GCM.open(box, using: self)
-        }
-        catch { return nil }
+    func aesDecrypt(data: Data) -> Data? {
+        guard let box = try? AES.GCM.SealedBox(combined: data) else { return nil }
+        return try? AES.GCM.open(box, using: self)
     }
     
     //MARK: - static Functions
     static func fromBase64String(_ base64String: String) -> SymmetricKey? {
-        if let data = Data(base64Encoded: base64String) {
-            return SymmetricKey(data: data)
-        }
-        return nil
+        guard let data = Data(base64Encoded: base64String) else { return nil }
+        return SymmetricKey(data: data)
     }
 }
-
-
-
 #endif

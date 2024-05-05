@@ -8,15 +8,18 @@
 import Foundation
 
 public extension Bool {
+    
+    // MARK: - Properties
+    var opposit: Bool {
+        !self
+    }
+    
+    // MARK: - Functions
     mutating func setTrue() {
         self = true
     }
     
     mutating func setFalse() {
         self = false
-    }
-    
-    var opposit: Bool {
-        !self
     }
 }

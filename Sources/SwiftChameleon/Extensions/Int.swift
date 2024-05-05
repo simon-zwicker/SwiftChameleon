@@ -15,19 +15,19 @@ public extension Int {
     }
     
     var double: Double {
-        Double( self )
+        Double(self)
     }
     
     var float: Float {
-        Float( self )
+        Float(self)
     }
     
     var cgFloat: CGFloat {
-        CGFloat( self.float )
+        CGFloat(self.float)
     }
     
     //MARK: - Funktions
-    func divisibleBy(_ value: Int )-> Bool {
+    func divisibleBy(_ value: Int) -> Bool {
         self % value == 0
     }
 }

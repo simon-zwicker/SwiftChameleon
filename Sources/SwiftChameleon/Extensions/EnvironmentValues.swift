@@ -1,9 +1,12 @@
+
 import SwiftUI
 
-#if canImport(UIKit)
 public extension EnvironmentValues {
+    
+    #if canImport(UIKit)
     var safeAreaInsets: EdgeInsets {
         self[SafeAreaInsetsKey.self]
     }
+    #endif
 }
-#endif
+

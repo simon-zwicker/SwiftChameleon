@@ -5,20 +5,15 @@ import AppKit
 #endif
 
 public class URLHandler {
-    public static func open(urlString: String)-> Bool {
-        guard let url = URL(string: urlString) else {
-            return false
-        }
-        
+    public static func open(urlString: String) -> Bool {
+        guard let url = URL(string: urlString) else { return false }
         open(url)
         return true
     }
     
     public static func open(_ url: URL) {
         #if canImport(UIKit)
-        if UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url)
-        }
+        UIApplication.shared.open(url)
         #elseif canImport(AppKit)
         NSWorkspace.shared.open(url)
         #endif

@@ -1,13 +1,14 @@
-import Foundation
 #if canImport(CryptoKit)
 import CryptoKit
 #endif
+
+import Foundation
 
 public extension Data {
     
     //MARK: - Properties
     var octalString: String {
-        return self.map {byte in
+        return self.map { byte in
             String(format: "%03o", byte)
         }.joined()
     }
@@ -17,7 +18,7 @@ public extension Data {
         do {
             return try JSONDecoder().decode(T.self, from: self)
         } catch {
-            throw error
+            throw DataError.decode
         }
     }
     
@@ -31,10 +32,9 @@ public extension Data {
             }
             return Int32(-67808)
         }
-        if result == errSecSuccess {
-            return keyData
-        }
-        throw RandomDataError.failed
+        
+        guard result == errSecSuccess else { throw DataError.failed }
+        return keyData
     }
     #endif
 }

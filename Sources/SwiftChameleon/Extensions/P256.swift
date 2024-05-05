@@ -18,9 +18,11 @@ public extension P256PrivateKey {
     }
     
     //MARK: - Functions
-    func sharedSymmetricKey(_ otherPartyPublicKey: P256.KeyAgreement.PublicKey,
-                            salt: Data? = nil,
-                            sharedInfo: Data? = nil) throws -> SymmetricKey {
+    func sharedSymmetricKey(
+        _ otherPartyPublicKey: P256.KeyAgreement.PublicKey,
+        salt: Data? = nil,
+        sharedInfo: Data? = nil
+    ) throws -> SymmetricKey {
         let secret = try sharedSecretFromKeyAgreement(with: otherPartyPublicKey)
         return secret.hkdfDerivedSymmetricKey(
             using: SHA256.self,
@@ -48,5 +50,4 @@ public extension P256SigningPublicKey {
         self.rawRepresentation.base64EncodedString()
     }
 }
-
 #endif
