@@ -1,8 +1,11 @@
-//
-//  File.swift
-//  
-//
-//  Created by Mia Koring on 05.05.24.
-//
-
 import Foundation
+
+#if canImport(Security)
+public enum RSAError: Error {
+    case keyGenerationError
+    case encryptionInvalidArgumentError( String )
+    case publicKeyRetrievalError
+    case encryptionError
+    case decryptionError
+}
+#endif
