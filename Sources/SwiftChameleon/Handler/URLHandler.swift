@@ -5,13 +5,13 @@ import AppKit
 #endif
 
 public class URLHandler {
-    public static func open(urlString: String) -> Bool {
+    static func open(urlString: String) -> Bool {
         guard let url = URL(string: urlString) else { return false }
         open(url)
         return true
     }
     
-    public static func open(_ url: URL) {
+    static func open(_ url: URL) {
         #if canImport(UIKit)
         UIApplication.shared.open(url)
         #elseif canImport(AppKit)

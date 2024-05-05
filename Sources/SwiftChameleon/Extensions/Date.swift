@@ -19,4 +19,10 @@ public extension Date {
     func get(_ component: Calendar.Component) -> Int {
         return Calendar.current.component(component, from: self)
     }
+    
+    func toString(with format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: self)
+    }
 }

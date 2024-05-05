@@ -43,6 +43,21 @@ public extension String {
         return Data(bytes)
     }
     
+    var toDate: Date? {
+        let formatter = DateFormatter()
+        formatter.timeZone = .current
+        formatter.locale = .current
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.date(from: self)
+    }
+    
+    var toDouble: Double? {
+        let formatter = NumberFormatter()
+        formatter.locale = .current
+        formatter.numberStyle = .decimal
+        return formatter.number(from: self)?.doubleValue
+    }
+    
     //MARK: - Functions
     func octalString(encoding: Encoding = .utf8)-> String? {
         self.data(using: encoding)?.octalString
