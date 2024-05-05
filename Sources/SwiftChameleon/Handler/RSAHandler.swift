@@ -5,9 +5,9 @@ import Security
 import CoreFoundation
 
 ///Implementation of the RSA Public Key encryption algorithm using the Security framework
-class RSA {
+public class RSA {
     ///generates a PrivateKey and the fitting PublicKey, the PublicKey is representated as base64 encoded String, the PrivateKey is a Reference to a locally stored key anc can't be transmitted
-    static func generateKeyPair(_ keySize: RSAKeySize) throws -> RSAKeypair {
+    public static func generateKeyPair(_ keySize: RSAKeySize) throws -> RSAKeypair {
         
         //parameters for rsakey with size set in function call
         let keyPairAttr: [String: Any] = [kSecAttrKeyType as String: kSecAttrKeyTypeRSA, kSecAttrKeySizeInBits as String: keySize.rawValue]
@@ -28,7 +28,7 @@ class RSA {
     }
     
     ///encrypts Data using OAEPSHA384
-    static func encrypt(_ data: Data, publicKey: SecKey? = nil, publicKeyBase64: String? = nil, keySize: RSAKeySize = .bit2048) throws -> Data {
+    public static func encrypt(_ data: Data, publicKey: SecKey? = nil, publicKeyBase64: String? = nil, keySize: RSAKeySize = .bit2048) throws -> Data {
         //attributes needed to encrypt with the rsa keys
         let keyAttr: [String: Any] = [kSecAttrKeyType as String: kSecAttrKeyTypeRSA, kSecAttrKeySizeInBits as String: keySize.rawValue, kSecAttrKeyClass as String: kSecAttrKeyClassPublic]
         var key: SecKey?
@@ -56,7 +56,7 @@ class RSA {
     }
     
     ///decrypts OAEPSHA384 encrypted Data
-    static func decrypt(_ data: Data, privateKey: SecKey)throws -> Data {
+    public static func decrypt(_ data: Data, privateKey: SecKey)throws -> Data {
         if let clear = SecKeyCreateDecryptedData(privateKey, .rsaEncryptionOAEPSHA384, data as CFData, nil) {
             return clear as Data
         }
