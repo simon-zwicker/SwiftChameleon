@@ -17,12 +17,16 @@ public extension Date {
     
     // MARK: - Functions
     func get(_ component: Calendar.Component) -> Int {
-        return Calendar.current.component(component, from: self)
+        Calendar.current.component(component, from: self)
     }
     
     func toString(with format: String) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = format
         return formatter.string(from: self)
+    }
+    
+    func add(for type: Calendar.Component, value: Int) -> Date? {
+        Calendar.current.date(byAdding: type, value: value, to: self)
     }
 }
