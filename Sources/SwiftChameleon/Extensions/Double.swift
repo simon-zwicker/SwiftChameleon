@@ -8,6 +8,26 @@
 import Foundation
 
 public extension Double {
+    
+    //MARK: - Properties
+    var float: Float {
+        Float(self)
+    }
+    
+    //strips decimalplaces
+    var int: Int {
+        Int(self)
+    }
+    
+    var roundedInt: Int {
+        Int(self.rounded())
+    }
+    
+    var string: String {
+        "\(self)"
+    }
+    
+    //MARK: - Functions
     func string(decimalPlaces: Int = 10) -> String {
         String(format: "%.\(decimalPlaces)f", self)
     }
@@ -26,5 +46,10 @@ public extension Double {
         return formatter.string(
             from: NSNumber(value: self)
         )
+    }
+    
+    func roundedTo(_ decimalPlaces: Int = 2)-> Double {
+        let multiply = Double("\(pow(10, decimalPlaces))") ?? 0.0
+        return (self * multiply).rounded() / multiply
     }
 }

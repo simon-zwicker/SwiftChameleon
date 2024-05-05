@@ -14,6 +14,10 @@ public extension Bool {
         !self
     }
     
+    var string: String {
+        "\(self)"
+    }
+    
     // MARK: - Functions
     mutating func setTrue() {
         self = true
