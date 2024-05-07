@@ -5,8 +5,12 @@ import CryptoKit
 public extension SymmetricKey {
     //MARK: - Properties
     var base64String: String {
-        let data = self.withUnsafeBytes { Data($0) }
+        let data = self.data
         return data.base64EncodedString()
+    }
+    
+    var data: Data {
+        self.withUnsafeBytes { Data($0) }
     }
     
     //MARK: - Functions
