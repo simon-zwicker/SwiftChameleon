@@ -34,9 +34,7 @@ public extension P256PrivateKey {
     
     //MARK: - Initializer
     init(_ base64Representation: String) throws {
-        guard let data = Data(base64Encoded: base64Representation) else {
-            throw DataError.decode
-        }
+        guard let data = Data(base64Encoded: base64Representation) else { throw DataError.decode }
         self = try P256PrivateKey(rawRepresentation: data)
     }
 }
@@ -50,9 +48,7 @@ public extension P256PublicKey {
     
     //MARK: - Initializer
     init(_ base64Representation: String) throws {
-        guard let data = Data(base64Encoded: base64Representation) else {
-            throw DataError.decode
-        }
+        guard let data = Data(base64Encoded: base64Representation) else { throw DataError.decode }
         self = try P256PublicKey(rawRepresentation: data)
     }
 }
@@ -66,9 +62,7 @@ public extension P256SigningPrivateKey {
     
     //MARK: - Initializer
     init(_ base64Representation: String) throws {
-        guard let data = Data(base64Encoded: base64Representation) else {
-            throw DataError.decode
-        }
+        guard let data = Data(base64Encoded: base64Representation) else { throw DataError.decode }
         self = try P256SigningPrivateKey(rawRepresentation: data)
     }
 }
@@ -82,9 +76,7 @@ public extension P256SigningPublicKey {
     
     //MARK: - Initializer
     init(_ base64Representation: String) throws {
-        guard let data = Data(base64Encoded: base64Representation) else {
-            throw DataError.decode
-        }
+        guard let data = Data(base64Encoded: base64Representation) else { throw DataError.decode }
         self = try P256SigningPublicKey(rawRepresentation: data)
     }
 }

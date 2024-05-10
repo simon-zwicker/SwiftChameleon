@@ -8,16 +8,7 @@
 import Foundation
 
 public extension Bool {
-    
-    // MARK: - Properties
-    var opposit: Bool {
-        !self
-    }
-    
-    var string: String {
-        "\(self)"
-    }
-    
+
     // MARK: - Functions
     mutating func setTrue() {
         self = true

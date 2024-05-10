@@ -15,16 +15,20 @@ public extension SymmetricKey {
     
     //MARK: - Functions
     func aesEncrypt(data: Data, nonce: AES.GCM.Nonce? = nil, authenticating: Data? = nil) -> Data? {
-        if nonce.isNil && authenticating.isNil {
+        if nonce.isNil, authenticating.isNil {
             return try? AES.GCM.seal(data, using: self).combined
         }
-        if !nonce.isNil && authenticating.isNil {
+
+        if let nonce, authenticating.isNil {
             return try? AES.GCM.seal(data, using: self, nonce: nonce).combined
         }
-        if nonce.isNil && !authenticating.isNil {
-            return try? AES.GCM.seal(data, using: self, authenticating: authenticating!).combined
+
+        if nonce.isNil, let authenticating {
+            return try? AES.GCM.seal(data, using: self, authenticating: authenticating).combined
         }
-        return try? AES.GCM.seal(data, using: self, nonce: nonce, authenticating: authenticating!).combined
+
+        guard let authenticating else { return nil }
+        return try? AES.GCM.seal(data, using: self, nonce: nonce, authenticating: authenticating).combined
     }
     
     func aesDecrypt(data: Data) -> Data? {

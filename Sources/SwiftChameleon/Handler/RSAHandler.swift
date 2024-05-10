@@ -10,58 +10,68 @@ public class RSA {
     public static func generateKeyPair(_ keySize: RSAKeySize) throws -> RSAKeypair {
         
         //parameters for rsakey with size set in function call
-        let keyPairAttr: [String: Any] = [kSecAttrKeyType as String: kSecAttrKeyTypeRSA, kSecAttrKeySizeInBits as String: keySize.rawValue]
+        let keyPairAttr: [String: Any] = [
+            kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
+            kSecAttrKeySizeInBits as String: keySize.rawValue
+        ]
         
         //if generation of key succeeded
-        if let privateKey: SecKey = SecKeyCreateRandomKey(keyPairAttr as CFDictionary, nil) {
-            
-            //if extraction of publickey from privatekey succeeded
-            if let publicKey = SecKeyCopyPublicKey(privateKey),
-               let publicKeyRepresentation = SecKeyCopyExternalRepresentation(publicKey, nil) as? Data {
-                
-                //keypair with base64encoded public key and reference to privatekey
-                let keyPair = RSAKeypair(publicKey: publicKeyRepresentation.base64EncodedString(), privateKey: privateKey.self)
-                return keyPair
-            }
-        }
-        throw RSAError.keyGenerationError
+        guard 
+            let privateKey: SecKey = SecKeyCreateRandomKey(keyPairAttr as CFDictionary, nil),
+            let publicKey = SecKeyCopyPublicKey(privateKey),
+            let publicKeyRepresentation = SecKeyCopyExternalRepresentation(publicKey, nil) as? Data
+        else { throw RSAError.keyGenerationError }
+        
+        let keyPair = RSAKeypair(
+            publicKey: publicKeyRepresentation.base64EncodedString(),
+            privateKey: privateKey.self
+        )
+        return keyPair
     }
     
     ///encrypts Data using OAEPSHA384
-    public static func encrypt(_ data: Data, publicKey: SecKey? = nil, publicKeyBase64: String? = nil, keySize: RSAKeySize = .bit2048) throws -> Data {
+    public static func encrypt(
+        _ data: Data,
+        publicKey: SecKey? = nil,
+        publicKeyBase64: String? = nil,
+        keySize: RSAKeySize = .bit2048
+    ) throws -> Data {
         //attributes needed to encrypt with the rsa keys
-        let keyAttr: [String: Any] = [kSecAttrKeyType as String: kSecAttrKeyTypeRSA, kSecAttrKeySizeInBits as String: keySize.rawValue, kSecAttrKeyClass as String: kSecAttrKeyClassPublic]
+        let keyAttr: [String: Any] = [
+            kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
+            kSecAttrKeySizeInBits as String: keySize.rawValue,
+            kSecAttrKeyClass as String: kSecAttrKeyClassPublic
+        ]
+
         var key: SecKey?
-        if publicKey != nil {
-            key = publicKey!
-        }
-        else if publicKeyBase64 != nil {
-            if let data = Data(base64Encoded: publicKeyBase64!),
-               let convertedKey = SecKeyCreateWithData(data as CFData, keyAttr as CFDictionary, nil) {
-                key = convertedKey
-            }
-        }
-        else {
+
+        if let publicKey {
+            key = publicKey
+        } else if 
+            let publicKeyBase64,
+            let data = Data(base64Encoded: publicKeyBase64),
+            let convertedKey = SecKeyCreateWithData(data as CFData, keyAttr as CFDictionary, nil)
+        {
+            key = convertedKey
+        } else {
             throw RSAError.encryptionInvalidArgumentError("missing key")
         }
-        if key == nil {
-            key = nil
-            throw RSAError.publicKeyRetrievalError
+
+        guard let key else { throw RSAError.publicKeyRetrievalError }
+        guard let encrypted = SecKeyCreateEncryptedData(key, .rsaEncryptionOAEPSHA384, data as CFData, nil) else {
+            throw RSAError.encryptionError
         }
-        if let encrypted = SecKeyCreateEncryptedData(key!, .rsaEncryptionOAEPSHA384, data as CFData, nil) {
-            return encrypted as Data
-        }
-        //encryption failed
-        throw RSAError.encryptionError
+        
+        return encrypted as Data
     }
     
     ///decrypts OAEPSHA384 encrypted Data
-    public static func decrypt(_ data: Data, privateKey: SecKey)throws -> Data {
-        if let clear = SecKeyCreateDecryptedData(privateKey, .rsaEncryptionOAEPSHA384, data as CFData, nil) {
-            return clear as Data
+    public static func decrypt(_ data: Data, privateKey: SecKey) throws -> Data {
+        guard let clear = SecKeyCreateDecryptedData(privateKey, .rsaEncryptionOAEPSHA384, data as CFData, nil) else {
+            throw RSAError.decryptionError
         }
-        //decryption failed
-        throw RSAError.decryptionError
+
+        return clear as Data
     }
 }
 #endif

@@ -43,9 +43,7 @@ public extension Double {
         formatter.minimumFractionDigits = decimalPlaces
         formatter.maximumFractionDigits = decimalPlaces
         
-        return formatter.string(
-            from: NSNumber(value: self)
-        )
+        return formatter.string(from: NSNumber(value: self))
     }
     
     func roundedTo(_ decimalPlaces: Int = 2)-> Double {
