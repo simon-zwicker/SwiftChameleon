@@ -46,7 +46,7 @@ public extension Double {
         return formatter.string(from: NSNumber(value: self))
     }
     
-    func roundedTo(_ decimalPlaces: Int = 2)-> Double {
+    func roundedTo(_ decimalPlaces: Int = 2) -> Double {
         let multiply = Double("\(pow(10, decimalPlaces))") ?? 0.0
         return (self * multiply).rounded() / multiply
     }
