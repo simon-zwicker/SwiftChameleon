@@ -23,6 +23,10 @@ public extension View {
         modifier(ButtonWrapper(role: role, action: action))
     }
 
+    func loadingButton(_ role: ButtonRole? = nil, isLoading: Binding<Bool>, action: @escaping () -> Void) -> some View {
+        modifier(LoadingButtonWrapper(role: role, isLoading: isLoading, action: action))
+    }
+
     @ViewBuilder
     func `if`<Content: View>(
         _ condition: Bool,
