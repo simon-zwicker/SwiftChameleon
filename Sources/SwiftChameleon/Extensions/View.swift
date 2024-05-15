@@ -8,11 +8,21 @@
 import SwiftUI
 
 public extension View {
+
+    // MARK: - Properties
+    var idiom : UIUserInterfaceIdiom {
+        UIDevice.current.userInterfaceIdiom
+    }
     
+    var isPortrait : Bool {
+        UIDevice.current.orientation.isPortrait
+    }
+    
+    // MARK: - Functions
     func button(_ role: ButtonRole? = nil, action: @escaping () -> Void) -> some View {
         modifier(ButtonWrapper(role: role, action: action))
     }
-    
+
     @ViewBuilder
     func `if`<Content: View>(
         _ condition: Bool,
