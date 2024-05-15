@@ -9,8 +9,8 @@ import SwiftUI
 
 public extension View {
     
-    func button(action: @escaping () -> Void) -> some View {
-        modifier(ButtonWrapper(action: action))
+    func button(_ role: ButtonRole? = nil, action: @escaping () -> Void) -> some View {
+        modifier(ButtonWrapper(role: role, action: action))
     }
     
     @ViewBuilder

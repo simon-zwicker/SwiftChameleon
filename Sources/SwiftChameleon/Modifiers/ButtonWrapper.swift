@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ButtonWrapper: ViewModifier {
+    var role: ButtonRole?
     var action: () -> Void
 
     func body(content: Content) -> some View {
-        Button { action() } label: { content }
+        Button(role: role, action: { action() }, label: { content })
     }
 }
