@@ -23,16 +23,12 @@ public extension Double {
         Int(self.rounded())
     }
     
-    var string: String {
-        "\(self)"
-    }
-    
     //MARK: - Functions
-    func string(decimalPlaces: Int = 10) -> String {
+    func string(_ decimalPlaces: Int = 10) -> String {
         String(format: "%.\(decimalPlaces)f", self)
     }
     
-    func currencyString(decimalPlaces: Int = 2) -> String? {
+    func currencyString(_ decimalPlaces: Int = 2) -> String? {
         let formatter = NumberFormatter()
         if let prefered = Locale.preferredLanguages.first {
             formatter.locale = .init(identifier: prefered)
