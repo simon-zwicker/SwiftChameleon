@@ -34,10 +34,10 @@ value.float // return float value
 You can make every view to a Button or loading Button
 ```
 Image(systenName: "pen")
-    .button(<#T##role: ButtonRole?##ButtonRole?#>, action: <#T##() -> Void#>)
+    .button(_ role: ButtonRole?, action: () -> Void)
         
         
 Image(systemName: "pen")
-    .loadingButton(<#T##role: ButtonRole?##ButtonRole?#>, isLoading: <#T##Binding<Bool>#>, action: <#T##() -> Void#>)
+    .loadingButton(_ role: ButtonRole?, isLoading: Binding<Bool>, action: () -> Void)
         
 ```
