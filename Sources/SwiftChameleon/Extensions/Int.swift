@@ -5,7 +5,7 @@
 //  
 //
 
-import Foundation
+import SwiftUI
 
 public extension Int {
     
@@ -29,5 +29,30 @@ public extension Int {
     //MARK: - Funktions
     func divisibleBy(_ value: Int) -> Bool {
         self % value == 0
+    }
+    
+    // MARK: - GridItems
+    var grid: [GridItem] {
+        var items: [GridItem] = []
+        for _ in 0..<self { items.append(.init()) }
+        return items
+    }
+    
+    func gridFlex(_ min: CGFloat, _ max: CGFloat) -> [GridItem] {
+        var items: [GridItem] = []
+        for _ in 0..<self { items.append(.init(.flexible(minimum: min, maximum: max))) }
+        return items
+    }
+    
+    func gridFixed(_ width: CGFloat) -> [GridItem] {
+        var items: [GridItem] = []
+        for _ in 0..<self { items.append(.init(.fixed(width))) }
+        return items
+    }
+    
+    func gridAdaptive(_ min: CGFloat, _ max: CGFloat) -> [GridItem] {
+        var items: [GridItem] = []
+        for _ in 0..<self { items.append(.init(.adaptive(minimum: min, maximum: max))) }
+        return items
     }
 }
