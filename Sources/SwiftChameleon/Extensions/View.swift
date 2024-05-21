@@ -26,6 +26,16 @@ public extension View {
     func loadingButton(_ role: ButtonRole? = nil, isLoading: Binding<Bool>, action: @escaping () -> Void) -> some View {
         modifier(LoadingButtonWrapper(role: role, isLoading: isLoading, action: action))
     }
+    
+    ///Show View only for specific languages identiers
+    @ViewBuilder
+    func onlyFor(_ langIdent: [String]) -> some View {
+        if let lang = Locale.preferredLanguages.first, langIdent.contains(lang) {
+            self
+        } else {
+            self.hidden()
+        }
+    }
 
     @ViewBuilder
     func `if`<Content: View>(
