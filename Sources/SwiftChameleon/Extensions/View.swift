@@ -10,6 +10,7 @@ import SwiftUI
 public extension View {
 
     // MARK: - Properties
+    #if canImport(UIKit)
     var idiom : UIUserInterfaceIdiom {
         UIDevice.current.userInterfaceIdiom
     }
@@ -17,6 +18,7 @@ public extension View {
     var isPortrait : Bool {
         UIDevice.current.orientation.isPortrait
     }
+    #endif
     
     // MARK: - Functions
     func button(_ role: ButtonRole? = nil, action: @escaping () -> Void) -> some View {
