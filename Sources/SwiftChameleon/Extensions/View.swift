@@ -44,6 +44,27 @@ public extension View {
         }
     }
     
+    //if-else if-else alternative to function above
+    ///currently every view parameter has to be declared, i don't know why
+    @ViewBuilder
+    func when(
+        _ condition: Bool,
+        _ condition2: Bool? = nil,
+        then: (Self) -> some View,
+        or: ((Self) -> some View)? = nil,
+        otherwise: ((Self) -> some View)? = nil
+    ) -> some View {
+        if condition {
+            then(self)
+        } else if let condition2 = condition2, condition2, let or {
+            or(self)
+        } else if let otherwise {
+            otherwise(self)
+        } else {
+            self
+        }
+    }
+    
     #if canImport(UIKit)
     func hideKeyboard() {
         UIApplication.shared.sendAction(
