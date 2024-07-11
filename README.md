@@ -1,13 +1,13 @@
-#SwiftChameleon
+# SwiftChameleon
 
 Package with usefull extensions
 
 
-##Swift 
+## Swift 
 
-###Bool
+### Bool
 
-####setTrue & setFalse
+#### setTrue & setFalse
 
 ```
 var value: Bool = false
@@ -15,9 +15,9 @@ value.setTrue() // value is true
 value.setFalse() // value is false
 ```
 
-###Double
+### Double
 
-####Nice String
+#### Nice String
 
 ```
 var value: Double = 12.12345
@@ -25,7 +25,7 @@ value.string(2) // return Double String with given decimal places
 value.currencyString(2) // return Double String with given decimal places & local currency
 ```
 
-####Numbers
+#### Numbers
 
 ```
 var value: Double = 12.123142
@@ -35,9 +35,9 @@ value.int // return not rounded Double as Int
 value.float // return float value
 ```
 
-##SwiftUI
+## SwiftUI
 
-###Button
+### Button
 
 You can make every view to a Button or loading Button
 
