@@ -3,7 +3,7 @@ import Foundation
 #if canImport(CryptoKit)
 import CryptoKit
 
-extension SHA256 {
+public extension SHA256 {
     static func hashString(data: Data) -> String {
         let digest = SHA256.hash(data: data)
         let digestData = Data(digest)
@@ -12,7 +12,7 @@ extension SHA256 {
     }
 }
 
-extension SHA384 {
+public extension SHA384 {
     static func hashString(data: Data) -> String {
         let digest = SHA384.hash(data: data)
         let digestData = Data(digest)
@@ -21,7 +21,7 @@ extension SHA384 {
     }
 }
 
-extension SHA512 {
+public extension SHA512 {
     static func hashString(data: Data) -> String {
         let digest = SHA512.hash(data: data)
         let digestData = Data(digest)
