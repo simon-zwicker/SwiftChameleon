@@ -22,8 +22,20 @@ public extension Double {
     var roundedInt: Int {
         Int(self.rounded())
     }
-    
+
+    var radians: Double {
+        self * Double.pi / 180
+    }
+
+    var cgFloat: CGFloat {
+        CGFloat(self)
+    }
+
     //MARK: - Functions
+    func multiply(_ value: Double = 100.0) -> Double {
+        self * value
+    }
+    
     func string(_ decimalPlaces: Int = 10) -> String {
         String(format: "%.\(decimalPlaces)f", self)
     }
