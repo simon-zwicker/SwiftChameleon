@@ -1,5 +1,6 @@
 #if canImport(CryptoKit)
 import CryptoKit
+#endif
 
 
 import Foundation
@@ -21,7 +22,7 @@ public extension Data {
             throw DataError.decode
         }
     }
-    
+#if canImport(CryptoKit)
     static func randomBytes(count: Int = 32) throws -> Data {
         var keyData = Data(count: count)
         let result = keyData.withUnsafeMutableBytes { (rawMutableBufferPointer) in
@@ -35,5 +36,6 @@ public extension Data {
         guard result == errSecSuccess else { throw DataError.failed }
         return keyData
     }
-}
 #endif
+}
+

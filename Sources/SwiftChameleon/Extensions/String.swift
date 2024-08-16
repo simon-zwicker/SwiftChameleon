@@ -6,6 +6,7 @@
 //
 #if canImport(SwiftUI)
 import SwiftUI
+#endif
 
 public extension String {
     
@@ -14,9 +15,11 @@ public extension String {
         !self.isEmpty
     }
     
+#if canImport(SwiftUI)
     var translate: LocalizedStringKey {
         LocalizedStringKey(self)
     }
+    #endif
     
     var toArray: [Character] {
         Array(self)
@@ -68,4 +71,3 @@ public extension String {
         return String(data: data, encoding: encoding)
     }
 }
-#endif

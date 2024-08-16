@@ -6,6 +6,7 @@
 //
 #if canImport(SwiftUI)
 import SwiftUI
+#endif
 
 public extension Int {
     
@@ -21,16 +22,18 @@ public extension Int {
     var float: Float {
         Float(self)
     }
-    
+#if !os(Linux)
     var cgFloat: CGFloat {
         CGFloat(self.float)
     }
+#endif
     
     //MARK: - Funktions
     func divisibleBy(_ value: Int) -> Bool {
         self % value == 0
     }
     
+#if canImport(SwiftUI)
     // MARK: - GridItems
     var grid: [GridItem] {
         var items: [GridItem] = []
@@ -55,5 +58,5 @@ public extension Int {
         for _ in 0..<self { items.append(.init(.adaptive(minimum: min, maximum: max))) }
         return items
     }
+    #endif
 }
-#endif
