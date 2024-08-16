@@ -4,7 +4,7 @@
 //
 //  Created by Simon Zwicker on 04.05.24.
 //
-
+#if canImport(SwiftUI)
 import SwiftUI
 
 struct ButtonWrapper: ViewModifier {
@@ -15,3 +15,4 @@ struct ButtonWrapper: ViewModifier {
         Button(role: role, action: { action() }, label: { content })
     }
 }
+#endif

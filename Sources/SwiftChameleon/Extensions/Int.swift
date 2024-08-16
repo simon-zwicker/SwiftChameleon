@@ -4,7 +4,7 @@
 //  Created by Nico on 04.05.24.
 //  
 //
-
+#if canImport(SwiftUI)
 import SwiftUI
 
 public extension Int {
@@ -56,3 +56,4 @@ public extension Int {
         return items
     }
 }
+#endif

@@ -4,7 +4,7 @@
 //
 //  Created by Simon Zwicker on 15.05.24.
 //
-
+#if canImport(SwiftUI)
 import SwiftUI
 
 struct LoadingButtonWrapper: ViewModifier {
@@ -23,3 +23,4 @@ struct LoadingButtonWrapper: ViewModifier {
         })
     }
 }
+#endif

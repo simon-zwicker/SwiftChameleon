@@ -4,7 +4,7 @@
 //
 //  Created by Simon Zwicker on 04.05.24.
 //
-
+#if canImport(SwiftUI)
 import SwiftUI
 
 public extension String {
@@ -68,3 +68,4 @@ public extension String {
         return String(data: data, encoding: encoding)
     }
 }
+#endif

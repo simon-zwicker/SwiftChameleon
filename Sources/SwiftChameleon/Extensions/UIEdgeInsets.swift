@@ -1,4 +1,4 @@
-
+#if canImport(SwiftUI)
 import SwiftUI
 
 #if canImport(UIKit)
@@ -12,4 +12,5 @@ public extension UIEdgeInsets {
         )
     }
 }
+#endif
 #endif

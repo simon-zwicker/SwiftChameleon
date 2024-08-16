@@ -4,7 +4,7 @@
 //
 //  Created by Simon Zwicker on 17.07.24.
 //
-
+#if canImport(SwiftUI)
 import SwiftUI
 
 public extension Color {
@@ -98,3 +98,4 @@ public extension Color {
     }
 #endif
 }
+#endif

@@ -1,4 +1,4 @@
-
+#if canImport(SwiftUI)
 import SwiftUI
 
 #if canImport(UIKit)
@@ -10,4 +10,5 @@ public extension UIApplication {
             .first { $0.isKeyWindow }
     }
 }
+#endif
 #endif

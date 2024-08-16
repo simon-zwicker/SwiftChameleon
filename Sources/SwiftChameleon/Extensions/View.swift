@@ -4,7 +4,7 @@
 //
 //  Created by Simon Zwicker on 04.05.24.
 //
-
+#if canImport(SwiftUI)
 import SwiftUI
 
 public extension View {
@@ -76,3 +76,4 @@ public extension View {
     }
     #endif
 }
+#endif

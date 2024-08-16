@@ -4,7 +4,7 @@
 //
 //  Created by Simon Zwicker on 17.07.24.
 //
-
+#if canImport(SwiftUI)
 import SwiftUI
 
 public extension SwiftUI.Font {
@@ -66,3 +66,4 @@ public extension SwiftUI.Font {
         public static let extraLarge = Font.system(size: 54, weight: .bold)
     }
 }
+#endif

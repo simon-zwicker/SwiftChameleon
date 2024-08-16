@@ -4,7 +4,7 @@
 //  Created by Nico on 20.05.24.
 //  
 //
-
+#if canImport(SwiftUI)
 import Foundation
 import SwiftUI
 
@@ -13,3 +13,4 @@ struct EmptyButtonStyle: ButtonStyle {
         configuration.label
     }
 }
+#endif

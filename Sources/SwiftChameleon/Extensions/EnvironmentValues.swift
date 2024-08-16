@@ -1,4 +1,5 @@
 
+#if canImport(SwiftUI)
 import SwiftUI
 
 public extension EnvironmentValues {
@@ -10,3 +11,4 @@ public extension EnvironmentValues {
     #endif
 }
 
+#endif

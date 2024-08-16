@@ -6,6 +6,7 @@
 //
 
 import Foundation
+#if canImport(SwiftUI)
 import SwiftUI
 
 #if canImport(UIKit)
@@ -14,4 +15,5 @@ public extension UIScreen{
    static let screenHeight = UIScreen.main.bounds.size.height
    static let screenSize = UIScreen.main.bounds.size
 }
+#endif
 #endif
