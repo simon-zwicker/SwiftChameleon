@@ -4,6 +4,7 @@ import UIKit
 import AppKit
 #endif
 
+#if !os(Linux)
 public class URLHandler {
     public static func open(urlString: String) -> Bool {
         guard let url = URL(string: urlString) else { return false }
@@ -19,3 +20,4 @@ public class URLHandler {
         #endif
     }
 }
+#endif

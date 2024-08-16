@@ -1,3 +1,4 @@
+#if !os(Linux)
 import Foundation
 
 public extension URL {
@@ -5,3 +6,4 @@ public extension URL {
         URLHandler.open(self)
     }
 }
+#endif

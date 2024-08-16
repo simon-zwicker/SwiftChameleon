@@ -4,7 +4,7 @@
 //
 //  Created by Simon Zwicker on 05.05.24.
 //
-
+#if !os(Linux)
 import Foundation
 
 public struct JSONHandler {
@@ -14,3 +14,4 @@ public struct JSONHandler {
         return try? Data(contentsOf: URL(filePath: path))
     }
 }
+#endif
