@@ -1,7 +1,7 @@
 import Foundation
+#if canImport(CryptoKit)
 import CryptoKit
 
-#if canImport(CryptoKit)
 public extension SymmetricKey {
     //MARK: - Properties
     var base64String: String {
